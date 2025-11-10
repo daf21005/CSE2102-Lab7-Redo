@@ -21,12 +21,12 @@ In this lab assignment we are creating a quiz website using Thymeleaf, where it 
 
 Clean and install dependencies:
 ```
-./mvn clean install
+./mvnw clean install
 ```
 
 Run the application:
 ```
-./mvn spring-boot:run
+./mvnw spring-boot:run
 ```
 
 After starting, visit http://localhost:8080 in your browser to access the quiz.
@@ -34,5 +34,5 @@ After starting, visit http://localhost:8080 in your browser to access the quiz.
 ### Running Tests
 
 ```
-./mvn test
+./mvnw test
 ```
