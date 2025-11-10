@@ -1,0 +1,107 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+<head> 
+    <title>Quiz Question</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .question-container {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .question-number {
+            font-weight: bold;
+            color: #007bff;
+        }
+        .question-text {
+            font-size: 1.2em;
+            margin: 10px 0;
+        }
+        .options {
+            margin: 20px 0;
+        }
+        .option {
+            margin: 10px 0;
+        }
+        .option input[type="radio"] {
+            margin-right: 10px;
+        }
+        .submit-btn {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .submit-btn:hover {
+            background-color: #0056b3;
+        }
+        .message {
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+        .success {
+            background-color: #d4edda;
+            color: #155724;
+        }
+        .error {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+        .nav-links {
+            margin-top: 20px;
+        }
+        .nav-links a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        .progress {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Quiz Question</h1>
+    
+    <div class="progress">
+        <p>Question <span class="question-number" th:text="${count.count}">1</span></p>
+    </div>
+
+    <div class="question-container">
+        <form action="/get-question" method="post" th:object="${myString}">
+            <div class="question-text" th:text="*{myString}">Question text here</div>
+            
+            <div class="options">
+                <div class="option">
+                    <input type="radio" id="trueOption" name="answer" value="true" required>
+                    <label for="trueOption">True</label>
+                </div>
+                <div class="option">
+                    <input type="radio" id="falseOption" name="answer" value="false">
+                    <label for="falseOption">False</label>
+                </div>
+            </div>
+            
+            <button type="submit" class="submit-btn">Submit Answer</button>
+        </form>
+    </div>
+
+    <div th:if="${lastAnswerCorrect != null}" 
+         th:class="${lastAnswerCorrect ? 'message success' : 'message error'}"
+         th:text="${lastAnswerCorrect ? 'Correct! Well done!' : 'Incorrect. Try the next question!'}">
+    </div>
+
+    <div class="nav-links">
+        <p><a href="/">Return to Home</a></p>
+    </div>
+</body>
+</html>

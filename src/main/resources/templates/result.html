@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+<head> 
+    <title>Greeting Result</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .nav-links {
+            margin-top: 20px;
+        }
+        .nav-links a {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-right: 10px;
+        }
+        .nav-links a:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Greeting Submitted Successfully</h1>
+    
+    <div th:if="${count != null}">
+        <p>Visit count: <span th:text="${count.count}">0</span></p>
+    </div>
+    
+    <div th:if="${greeting != null}">
+        <h2>Your Message:</h2>
+        <p>ID: <span th:text="${greeting.id}">0</span></p>
+        <p>Message: <span th:text="${greeting.content}">No message</span></p>
+    </div>
+    
+    <div class="nav-links">
+        <a href="/greeting">Submit Another Greeting</a>
+        <a href="/get-question">Take the Quiz</a>
+        <a href="/">Return Home</a>
+    </div>
+</body>
+</html>
